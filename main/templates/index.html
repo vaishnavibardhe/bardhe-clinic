@@ -1,0 +1,650 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Bardhe Clinic{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h1 translate="no">Welcome to Bardhe Clinic Multispecialist Hospital</h1>
+        <p>Your Health, Our Priority</p>
+    </div>
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide active">
+                <img src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Doctor Consulting Patient">
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Hospital Reception">
+            </div>
+        </div>
+        <button class="prev-btn">‹</button>
+        <button class="next-btn">›</button>
+        <div class="dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+        </div>
+    </div>
+</section>
+
+<section class="home-intro-section">
+    <div class="home-intro-card">
+        <h2 translate="no">Welcome to Bardhe Clinic</h2>
+        <p translate="no">
+            Bardhe Clinic Multispecialist Hospital is dedicated to providing compassionate, reliable, and personalized healthcare for every patient and family in the community. Under the care of Dr. Lokesh Ujjwal Bardhe, the clinic offers general health checkups, fever and infection treatment, minor surgical procedures, wound dressing and suturing, preventive health consultation, and practical medical guidance with a patient-first approach. With easy appointment booking, supportive communication, and a convenient location near New Bus Stand, Jarud, Ta: Warud, Dist: Amravati, Bardhe Clinic aims to make quality healthcare accessible, comfortable, and trustworthy for everyone.
+        </p>
+    </div>
+</section>
+
+
+<section class="services-detailed-section">
+    <div class="container">
+        <h2 class="section-title">Our Specialized Treatments</h2>
+        <p class="section-subtitle">Expert care for every health condition</p>
+
+        <!-- Service 1: Pediatrics - Left Side -->
+        <div class="service-row">
+            <div class="service-info">
+                <div class="service-badge">01</div>
+                <h3>Pediatrics (बालरोग)</h3>
+                <h4>Child Healthcare Specialist</h4>
+                <p>Child health is our priority. Our pediatric specialists focus on the physical, mental, and emotional development of children. We provide solutions for all problems from newborns to adolescents.</p>
+                <ul class="service-features">
+                    <li>✅ Regular Health Checkups</li>
+                    <li>✅ Vaccination Services</li>
+                    <li>✅ Child Development Counseling</li>
+                    <li>✅ Treatment of Childhood Infections</li>
+                </ul>
+            </div>
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3" alt="Pediatrics">
+            </div>
+        </div>
+
+        <!-- Service 2: Diabetes & Thyroid - Right Side -->
+        <div class="service-row reverse">
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3" alt="Diabetes Care">
+            </div>
+            <div class="service-info">
+                <div class="service-badge">02</div>
+                <h3>Diabetes & Thyroid (मधुमेह & थायरोइड)</h3>
+                <h4>Endocrine Disorder Management</h4>
+                <p>Specialized treatment for Diabetes and Thyroid patients. Effective results through combination of modern diagnostic methods and Ayurvedic treatments.</p>
+                <ul class="service-features">
+                    <li>✅ Diabetes Control Counseling</li>
+                    <li>✅ Thyroid Testing & Treatment</li>
+                    <li>✅ Diet & Lifestyle Guidance</li>
+                    <li>✅ Regular Follow-up Care</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Service 3: Arthritis & Rheumatism - Left Side -->
+        <div class="service-row">
+            <div class="service-info">
+                <div class="service-badge">03</div>
+                <h3>Arthritis & Rheumatism (संधीवात & आमवात)</h3>
+                <h4>Joint Pain & Inflammation Treatment</h4>
+                <p>Relief from joint pain, swelling, and stiffness. Effective Ayurvedic treatment for Rheumatism and Arthritis with long-lasting results.</p>
+                <ul class="service-features">
+                    <li>✅ Joint Pain Relief</li>
+                    <li>✅ Inflammation Reduction Therapy</li>
+                    <li>✅ Panchakarma Treatment</li>
+                    <li>✅ Therapeutic Massage & Oil Treatment</li>
+                </ul>
+            </div>
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3" alt="Arthritis Treatment">
+            </div>
+        </div>
+
+        <!-- Service 4: Heart Diseases - Right Side -->
+        <div class="service-row reverse">
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-4.0.3" alt="Heart Care">
+            </div>
+            <div class="service-info">
+                <div class="service-badge">04</div>
+                <h3>Heart Diseases (हृदय विकार)</h3>
+                <h4>Cardiac Care & Management</h4>
+                <p>Comprehensive heart care including prevention, diagnosis, and management of various cardiac conditions with integrated medical approaches.</p>
+                <ul class="service-features">
+                    <li>✅ Cardiac Health Assessment</li>
+                    <li>✅ Hypertension Management</li>
+                    <li>✅ Cholesterol Control</li>
+                    <li>✅ Preventive Heart Care</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Service 5: Skin Diseases - Left Side -->
+        <div class="service-row">
+            <div class="service-info">
+                <div class="service-badge">05</div>
+                <h3>Skin Diseases (त्वचा विकार)</h3>
+                <h4>Dermatology Treatment</h4>
+                <p>Effective treatment for all types of skin problems including acne, eczema, psoriasis, and fungal infections using Ayurvedic and modern approaches.</p>
+                <ul class="service-features">
+                    <li>✅ Acne & Pimple Treatment</li>
+                    <li>✅ Eczema & Psoriasis Care</li>
+                    <li>✅ Fungal Infection Treatment</li>
+                    <li>✅ Skin Allergy Management</li>
+                </ul>
+            </div>
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?ixlib=rb-4.0.3" alt="Skin Treatment">
+            </div>
+        </div>
+
+        <!-- Service 6: Gastrointestinal Disorders - Right Side -->
+        <div class="service-row reverse">
+            <div class="service-image">
+                <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?ixlib=rb-4.0.3" alt="Stomach Care">
+            </div>
+            <div class="service-info">
+                <div class="service-badge">06</div>
+                <h3>Gastrointestinal Disorders (पोटाचे विकार)</h3>
+                <h4>Digestive Health Treatment</h4>
+                <p>Complete care for stomach and digestive problems including acidity, indigestion, constipation, and other GI issues with natural remedies.</p>
+                <ul class="service-features">
+                    <li>✅ Acidity & GERD Treatment</li>
+                    <li>✅ Constipation Relief</li>
+                    <li>✅ Indigestion Management</li>
+                    <li>✅ Liver Health Care</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Doctor's Profile Card with Photo -->
+        <div class="doctor-profile-card">
+            <div class="doctor-left">
+                <img src="{% static 'images/poster.jpeg' %}" alt="Dr. Lokesh Ujjwal Bardhe" class="poster">
+            </div>
+            <div class="doctor-right">
+                <h2 translate="no">Dr. Lokesh Ujjwal Bardhe</h2>
+                <h3>B.A.M.S. M.D. Pune</h3>
+                <p class="reg-no">Reg. No. I-98774-A</p>
+                <p class="designation">General Physician & Surgeon</p>
+                <div class="contact-info">
+                    <p>📞 Mob: 9890067242</p>
+                </div>
+                
+                <div class="all-services-list">
+                    <h4>📋 All Available Services:</h4>
+                    <div class="services-grid-small">
+                        <span>Diabetes</span>
+                        <span>Pediatrics</span>
+                        <span>Ayurvedic Treatment</span>
+                        <span>Hypertension</span>
+                        <span>Eye, Ear, Nose Disorders</span>
+                        <span>Agni karma</span>
+                        <span>Thyroid</span>
+                        <span>Stomach Disorders</span>
+                        <span>Vidhi karma</span>
+                        <span>Respiratory Disorders</span>
+                        <span>Kidney Disorders</span>
+                        <span>Rheumatism</span>
+                        <span>Skin Diseases</span>
+                        <span>Piles / Fistula</span>
+                        <span>Arthritis</span>
+                        <span>Heart Diseases</span>
+                        <span>Suturing & Stitch Removal</span>
+                        <span>Heel Pain (Gridhrasi)</span>
+                        <span>Moolan Prathan</span>
+                        <span>Day Care Facility</span>
+                        <span>Neck & Back Pain</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+</section>
+
+<!-- Service Details Popup -->
+<div id="servicePopup" class="service-popup">
+    <div class="popup-content">
+        <span class="close-popup">&times;</span>
+        <div class="popup-header">
+            <div class="popup-icon">🩺</div>
+            <h2 id="popupTitle">Service Name</h2>
+        </div>
+        <div class="popup-body">
+            <div class="popup-section">
+                <h3>📌 About This Service</h3>
+                <p id="popupDescription">Service description will appear here...</p>
+            </div>
+            <div class="popup-section">
+                <h3>💊 Treatment & Procedure</h3>
+                <p id="popupTreatment">Treatment details...</p>
+            </div>
+            <div class="popup-section">
+                <h3>✅ Benefits</h3>
+                <ul id="popupBenefits">
+                    <li>Benefit 1</li>
+                    <li>Benefit 2</li>
+                </ul>
+            </div>
+            <div class="popup-section">
+                <h3>📞 Need Help?</h3>
+                <p>Call us at <strong>9890067242</strong></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // ========== SLIDER CODE ==========
+    let currentSlide = 0;
+    const slider = document.querySelector('.slider');
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const nextButton = document.querySelector('.next-btn');
+    const prevButton = document.querySelector('.prev-btn');
+    const totalSlides = slides.length;
+    let autoSlideInterval;
+    let isTransitioning = false;
+
+    function showSlide(index) {
+        if (isTransitioning) return;
+        if (!slider || !slides.length) return;
+        
+        if (index < 0) index = totalSlides - 1;
+        if (index >= totalSlides) index = 0;
+        
+        isTransitioning = true;
+        slider.style.transform = `translateX(-${index * 100}%)`;
+        
+        dots.forEach((dot, dotIndex) => {
+            dot.classList.toggle('active', dotIndex === index);
+        });
+        
+        currentSlide = index;
+        
+        setTimeout(() => {
+            isTransitioning = false;
+        }, 500);
+    }
+
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+        showSlide(currentSlide - 1);
+    }
+
+    function startAutoSlide() {
+        if (autoSlideInterval) clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(() => {
+            nextSlide();
+        }, 5000);
+    }
+
+    function stopAutoSlide() {
+        if (autoSlideInterval) {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = null;
+        }
+    }
+
+    if (nextButton && prevButton) {
+        nextButton.addEventListener('click', () => {
+            stopAutoSlide();
+            nextSlide();
+            startAutoSlide();
+        });
+        
+        prevButton.addEventListener('click', () => {
+            stopAutoSlide();
+            prevSlide();
+            startAutoSlide();
+        });
+    }
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            stopAutoSlide();
+            showSlide(index);
+            startAutoSlide();
+        });
+    });
+
+    const sliderContainer = document.querySelector('.slider-container');
+    if (sliderContainer) {
+        sliderContainer.addEventListener('mouseenter', stopAutoSlide);
+        sliderContainer.addEventListener('mouseleave', startAutoSlide);
+    }
+
+    showSlide(0);
+    startAutoSlide();
+
+    // ========== SERVICE POPUP CODE ==========
+    // Service data for all services
+    const serviceDetails = {
+    'Diabetes': {
+        icon: '🩸',
+        description: 'Diabetes is a chronic condition that affects how your body turns food into energy. Our clinic provides comprehensive diabetes care including blood sugar monitoring, medication management, and lifestyle counseling.',
+        treatment: 'We offer personalized treatment plans including oral medications, insulin therapy if needed, dietary guidance, regular blood sugar monitoring, and foot care.',
+        benefits: [
+            '✓ Better blood sugar control',
+            '✓ Reduced risk of complications',
+            '✓ Improved energy levels',
+            '✓ Personalized diet plans',
+            '✓ Regular monitoring and support'
+        ]
+    },
+    'Pediatrics': {
+        icon: '👶',
+        description: 'Pediatrics is the branch of medicine dealing with the health and medical care of infants, children, and adolescents from birth up to age 18.',
+        treatment: 'We provide complete child healthcare including regular checkups, vaccinations, growth monitoring, treatment of common childhood illnesses, and developmental assessments.',
+        benefits: [
+            '✓ Expert child specialists',
+            '✓ Complete vaccination schedule',
+            '✓ Growth & development tracking',
+            '✓ Child-friendly environment',
+            '✓ Parental guidance & support'
+        ]
+    },
+    'Ayurvedic Treatment': {
+        icon: '🌿',
+        description: 'Ayurveda is a traditional Indian system of medicine that focuses on natural healing, balance of body energies (doshas), and preventive healthcare.',
+        treatment: 'We offer personalized Ayurvedic treatments including herbal medicines, Panchakarma therapy, dietary recommendations, and lifestyle modifications.',
+        benefits: [
+            '✓ Natural & side-effect free',
+            '✓ Holistic healing approach',
+            '✓ Boosts immunity naturally',
+            '✓ Long-lasting results',
+            '✓ Treats root cause'
+        ]
+    },
+    'Hypertension': {
+        icon: '❤️',
+        description: 'Hypertension (high blood pressure) is a common condition where the force of blood against artery walls is consistently too high.',
+        treatment: 'We provide blood pressure monitoring, lifestyle modifications, dietary changes (low sodium diet), stress management, and appropriate medications.',
+        benefits: [
+            '✓ Controlled blood pressure',
+            '✓ Reduced risk of heart attack',
+            '✓ Better heart health',
+            '✓ Customized treatment plans',
+            '✓ Regular follow-ups'
+        ]
+    },
+    'Eye, Ear, Nose Disorders': {
+        icon: '👁️',
+        description: 'Comprehensive care for eyes, ears, nose, and throat conditions affecting vision, hearing, breathing, and overall ENT health.',
+        treatment: 'We diagnose and treat common ENT problems including eye infections, ear infections, sinus issues, tonsillitis, and provide appropriate medical management.',
+        benefits: [
+            '✓ Complete ENT care',
+            '✓ Advanced diagnostic facilities',
+            '✓ Effective treatment plans',
+            '✓ Quick relief from symptoms',
+            '✓ Preventive care advice'
+        ]
+    },
+    'Agni karma': {
+        icon: '🔥',
+        description: 'Agni Karma is an ancient Ayurvedic thermal cauterization procedure used for treating various chronic pain conditions, musculoskeletal disorders, and skin problems.',
+        treatment: 'This therapy involves applying controlled heat to specific points using specialized instruments. It provides instant relief from pain and is particularly effective for chronic conditions.',
+        benefits: [
+            '✓ Instant pain relief',
+            '✓ No side effects',
+            '✓ Permanent solution for chronic pain',
+            '✓ Non-invasive procedure',
+            '✓ Quick recovery time'
+        ]
+    },
+    'Thyroid': {
+        icon: '🦋',
+        description: 'Thyroid disorders occur when the thyroid gland produces too much or too little hormones, affecting metabolism and overall health.',
+        treatment: 'We offer thyroid function testing, medication management, dietary guidance, and regular monitoring to maintain optimal hormone levels.',
+        benefits: [
+            '✓ Accurate diagnosis',
+            '✓ Proper medication dosage',
+            '✓ Symptom relief',
+            '✓ Regular monitoring',
+            '✓ Lifestyle guidance'
+        ]
+    },
+    'Stomach Disorders': {
+        icon: '🍽️',
+        description: 'Gastrointestinal disorders affecting the stomach, including acidity, indigestion, gastritis, ulcers, and other digestive problems.',
+        treatment: 'We provide dietary modifications, herbal remedies, antacids, digestive enzymes, and lifestyle changes to improve digestive health.',
+        benefits: [
+            '✓ Relief from acidity & gas',
+            '✓ Better digestion',
+            '✓ Reduced stomach pain',
+            '✓ Dietary guidance',
+            '✓ Natural treatment options'
+        ]
+    },
+    'Vidhi karma': {
+        icon: '💉',
+        description: 'Vidhi Karma refers to specialized surgical and para-surgical procedures in Ayurveda for treating various conditions that require minor interventions.',
+        treatment: 'We perform minor surgical procedures including wound debridement, abscess drainage, foreign body removal, and other minor surgeries under sterile conditions.',
+        benefits: [
+            '✓ Safe & sterile procedures',
+            '✓ Minimal pain',
+            '✓ Quick healing',
+            '✓ Experienced surgeons',
+            '✓ Affordable treatment'
+        ]
+    },
+    'Respiratory Disorders': {
+        icon: '🫁',
+        description: 'Treatment for breathing-related problems including asthma, bronchitis, allergies, sinusitis, and other respiratory conditions.',
+        treatment: 'We offer breathing exercises, steam therapy, Ayurvedic medicines, inhalers if needed, and lifestyle modifications for better respiratory health.',
+        benefits: [
+            '✓ Improved breathing',
+            '✓ Reduced asthma attacks',
+            '✓ Better lung function',
+            '✓ Natural remedies',
+            '✓ Preventive care'
+        ]
+    },
+    'Kidney Disorders': {
+        icon: '🩻',
+        description: 'Comprehensive care for kidney-related issues including infections, stones, urinary tract infections, and other renal problems.',
+        treatment: 'We provide proper hydration guidance, dietary modifications, herbal treatments, and medical management for various kidney conditions.',
+        benefits: [
+            '✓ Improved kidney function',
+            '✓ Prevention of complications',
+            '✓ Natural treatment options',
+            '✓ Dietary guidance',
+            '✓ Regular monitoring'
+        ]
+    },
+    'Rheumatism': {
+        icon: '🦵',
+        description: 'Rheumatism refers to various conditions causing chronic inflammation of joints, muscles, and connective tissues, leading to pain and stiffness.',
+        treatment: 'We provide Ayurvedic treatments including herbal medicines, specialized oils for massage, Panchakarma therapy, and lifestyle modifications.',
+        benefits: [
+            '✓ Reduced inflammation',
+            '✓ Pain relief',
+            '✓ Improved mobility',
+            '✓ Natural treatment',
+            '✓ Long-lasting results'
+        ]
+    },
+    'Skin Diseases': {
+        icon: '🧴',
+        description: 'Treatment for various skin conditions including acne, eczema, psoriasis, fungal infections, allergies, and other dermatological issues.',
+        treatment: 'We offer topical treatments, oral medications, Ayurvedic remedies, dietary guidance, and lifestyle modifications for healthy skin.',
+        benefits: [
+            '✓ Clearer, healthier skin',
+            '✓ Relief from itching',
+            '✓ Reduced acne & scars',
+            '✓ Natural treatments',
+            '✓ Long-term results'
+        ]
+    },
+    'Piles / Fistula': {
+        icon: '🩺',
+        description: 'Treatment for piles (hemorrhoids) and fistula-in-ano using non-surgical Ayurvedic methods. These conditions cause bleeding, pain, and discomfort during bowel movements.',
+        treatment: 'We offer Kshar Sutra therapy, herbal medications, dietary modifications, and lifestyle changes for complete cure without surgery.',
+        benefits: [
+            '✓ Non-surgical treatment',
+            '✓ Painless procedures',
+            '✓ Quick recovery',
+            '✓ No recurrence',
+            '✓ Natural healing'
+        ]
+    },
+    'Arthritis': {
+        icon: '🦴',
+        description: 'Arthritis causes joint pain, inflammation, and stiffness affecting mobility and quality of life. Common types include osteoarthritis and rheumatoid arthritis.',
+        treatment: 'We provide joint pain relief through Ayurvedic oils, Panchakarma therapy, gentle exercises, dietary changes, and anti-inflammatory treatments.',
+        benefits: [
+            '✓ Reduced joint pain',
+            '✓ Improved mobility',
+            '✓ Less inflammation',
+            '✓ Natural pain relief',
+            '✓ Better quality of life'
+        ]
+    },
+    'Heart Diseases': {
+        icon: '💓',
+        description: 'Comprehensive cardiac care for various heart conditions including prevention, diagnosis, and management of heart-related problems.',
+        treatment: 'We offer heart health assessments, cholesterol management, blood pressure control, dietary guidance, and lifestyle modifications for a healthy heart.',
+        benefits: [
+            '✓ Better heart health',
+            '✓ Reduced risk of heart attack',
+            '✓ Controlled cholesterol',
+            '✓ Regular monitoring',
+            '✓ Preventive care'
+        ]
+    },
+    'Suturing & Stitch Removal': {
+        icon: '🪡',
+        description: 'Professional wound care services including suturing (stitching) of fresh wounds and removal of stitches after healing.',
+        treatment: 'We provide sterile wound cleaning, local anesthesia if needed, proper suturing techniques, and careful stitch removal with minimal discomfort.',
+        benefits: [
+            '✓ Sterile procedure',
+            '✓ Minimal scarring',
+            '✓ Proper wound healing',
+            '✓ Painless stitch removal',
+            '✓ Infection prevention'
+        ]
+    },
+    'Heel Pain (Gridhrasi)': {
+        icon: '🦶',
+        description: 'Gridhrasi or heel pain is a common condition causing severe pain in the heel, often due to plantar fasciitis, Achilles tendonitis, or other foot problems.',
+        treatment: 'We provide Ayurvedic treatments including specialized oils, Panchakarma therapy, foot exercises, orthotic advice, and lifestyle modifications.',
+        benefits: [
+            '✓ Relief from heel pain',
+            '✓ Improved walking comfort',
+            '✓ Natural treatment',
+            '✓ No side effects',
+            '✓ Long-term relief'
+        ]
+    },
+    'Moolan Prathan': {
+        icon: '🌿',
+        description: 'Moolan Prathan is an Ayurvedic detoxification and rejuvenation therapy that helps remove toxins from the body and restore natural balance.',
+        treatment: 'This therapy involves specialized herbal preparations, dietary protocols, and lifestyle modifications to cleanse and rejuvenate the body systems.',
+        benefits: [
+            '✓ Complete body detox',
+            '✓ Increased energy',
+            '✓ Better digestion',
+            '✓ Improved immunity',
+            '✓ Overall wellness'
+        ]
+    },
+    'Day Care Facility': {
+        icon: '🏥',
+        description: 'Our day care facility provides medical supervision and care for patients who need treatment, observation, or minor procedures during daytime hours.',
+        treatment: 'We offer comfortable beds, nursing care, medications, medical attention, and post-procedure observation during day time hours from morning to evening.',
+        benefits: [
+            '✓ No overnight stay needed',
+            '✓ Quality medical care',
+            '✓ Comfortable environment',
+            '✓ Cost-effective',
+            '✓ Flexible timings'
+        ]
+    },
+    'Neck & Back Pain': {
+        icon: '💆',
+        description: 'Effective treatment for chronic neck pain, back pain, sciatica, cervical spondylosis, lumbar pain, and other spinal problems.',
+        treatment: 'We provide Ayurvedic massages, Panchakarma therapy, heat therapy, gentle exercises, posture correction guidance, and lifestyle modifications.',
+        benefits: [
+            '✓ Pain relief',
+            '✓ Improved flexibility',
+            '✓ Better posture',
+            '✓ Natural treatment',
+            '✓ Long-term results'
+        ]
+    }
+};
+
+    // Popup elements
+    const popup = document.getElementById('servicePopup');
+    const closeBtn = document.querySelector('.close-popup');
+    const popupTitle = document.getElementById('popupTitle');
+    const popupDescription = document.getElementById('popupDescription');
+    const popupTreatment = document.getElementById('popupTreatment');
+    const popupBenefits = document.getElementById('popupBenefits');
+
+    // Check if popup exists and service spans exist
+    const serviceSpans = document.querySelectorAll('.services-grid-small span');
+    
+    if (serviceSpans.length > 0 && popup) {
+        serviceSpans.forEach(service => {
+            service.addEventListener('click', function() {
+                const serviceName = this.textContent.trim();
+                const details = serviceDetails[serviceName];
+                
+                if (details) {
+                    popupTitle.textContent = serviceName;
+                    popupDescription.textContent = details.description;
+                    popupTreatment.textContent = details.treatment;
+                    
+                    popupBenefits.innerHTML = '';
+                    details.benefits.forEach(benefit => {
+                        const li = document.createElement('li');
+                        li.textContent = benefit;
+                        popupBenefits.appendChild(li);
+                    });
+                    
+                    const popupIcon = document.querySelector('.popup-icon');
+                    if (popupIcon) {
+                        popupIcon.textContent = details.icon;
+                    }
+                    
+                    popup.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+    }
+
+    // Close popup function
+    function closePopup() {
+        if (popup) {
+            popup.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closePopup);
+    }
+    
+    if (popup) {
+        popup.addEventListener('click', function(e) {
+            if (e.target === popup) {
+                closePopup();
+            }
+        });
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && popup && popup.style.display === 'flex') {
+            closePopup();
+        }
+    });
+});
+</script>
+
+{% endblock %}

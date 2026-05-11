@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}Services - Bardhe Clinic{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/services.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="page-section">
+  <div class="services-hero">
+    <img src="{% static 'images/services.jpg' %}" alt="Services Image">
+    <div class="hero-text">
+      <h2>Our Services</h2>
+      <p>Compassionate care for every stage of health</p>
+    </div>
+  </div>
+
+ <!-- Service Cards with Details -->
+  <div class="services-container">
+    <div class="service-card">
+      <div class="service-icon">🏥</div>
+      <h3>General Health Checkups</h3>
+      <p>Comprehensive health screenings and preventive care for all ages.</p>
+      <ul class="service-features">
+        <li>✓ Complete Blood Work</li>
+        <li>✓ Vital Signs Monitoring</li>
+        <li>✓ Health Risk Assessment</li>
+      </ul>
+      <a href="/book-appointment/" class="service-btn">Book Now →</a>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🌡️</div>
+      <h3>Fever & Infection Treatment</h3>
+      <p>Expert diagnosis and treatment for all types of infections.</p>
+      <ul class="service-features">
+        <li>✓ Rapid Fever Management</li>
+        <li>✓ Antibiotic Therapy</li>
+        <li>✓ 24/7 Symptom Monitoring</li>
+      </ul>
+      <a href="/book-appointment/" class="service-btn">Book Now →</a>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">✂️</div>
+      <h3>Minor Surgical Procedures</h3>
+      <p>Safe and sterile minor surgeries with minimal recovery time.</p>
+      <ul class="service-features">
+        <li>✓ Abscess Drainage</li>
+        <li>✓ Cyst Removal</li>
+        <li>✓ Biopsy Procedures</li>
+      </ul>
+      <a href="/book-appointment/" class="service-btn">Book Now →</a>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🚑</div>
+      <h3>Emergency Care</h3>
+      <p>Immediate medical attention for urgent health situations.</p>
+      <ul class="service-features">
+        <li>✓ 24/7 Emergency Response</li>
+        <li>✓ Trauma Care</li>
+        <li>✓ Critical Stabilization</li>
+      </ul>
+      <a href="/book-appointment/" class="service-btn">Book Now →</a>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🩹</div>
+      <h3>Wound Dressing & Suturing</h3>
+      <p>Professional wound care to prevent infection and promote healing.</p>
+      <ul class="service-features">
+        <li>✓ Sterile Dressing</li>
+        <li>✓ Stitches & Staples</li>
+        <li>✓ Scar Management</li>
+      </ul>
+      <a href="/book-appointment/" class="service-btn">Book Now →</a>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">📋</div>
+      <h3>Preventive Health Consultation</h3>
+      <p>Proactive health planning and lifestyle management.</p>
+      <ul class="service-features">
+        <li>✓ Diet & Nutrition Advice</li>
+        <li>✓ Vaccination Schedule</li>
+        <li>✓ Chronic Disease Prevention</li>
+      </ul>
+      <a href="/book-appointment/" class="service-btn">Book Now →</a>
+    </div>
+  </div>
+
+  <!-- Additional Sections -->
+  
+  <!-- Why Choose Us -->
+  <div class="why-choose-us">
+    <h2>Why Choose Bardhe Clinic?</h2>
+    <div class="features-grid">
+      <div class="feature">
+        <span>⭐</span>
+        <h4>Experienced Doctors</h4>
+        <p>10+ years of clinical expertise</p>
+      </div>
+      <div class="feature">
+        <span>💊</span>
+        <h4>Modern Equipment</h4>
+        <p>Latest medical technology</p>
+      </div>
+      <div class="feature">
+        <span>❤️</span>
+        <h4>Patient-Centered Care</h4>
+        <p>Personalized treatment plans</p>
+      </div>
+      <div class="feature">
+        <span>💰</span>
+        <h4>Affordable Pricing</h4>
+        <p>Quality care at reasonable rates</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="cta-section">
+    <h3>Need Emergency Help?</h3>
+    <p>Call us immediately for urgent medical assistance</p>
+    <div class="cta-buttons">
+      <a href="/contact/" class="cta-btn primary">Contact Us</a>
+      <a href="/book-appointment/" class="cta-btn secondary">Book Appointment</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

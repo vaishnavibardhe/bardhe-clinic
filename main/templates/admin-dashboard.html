@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Patient Dashboard - Bardhe Clinic{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="dashboard-page">
+        <header class="dashboard-header">
+            <div>
+                <p class="eyebrow">Admin Dashboard</p>
+                <h1>Welcome back</h1>
+            </div>
+            <a href="/" class="button outline">Back to Home</a>
+        </header>
+
+        <section class="card-grid">
+            <div class="card">
+                <p class="card-label">Total Appointments</p>
+                <h2 id="total-appointments">0</h2>
+            </div>
+            <div class="card">
+                <p class="card-label">Confirmed</p>
+                <h2 id="confirmed-count">0</h2>
+            </div>
+            <div class="card">
+                <p class="card-label">Doctor</p>
+                <h2 translate="no">Dr. Bardhe</h2>
+            </div>
+            <div class="card">
+                <p class="card-label">Status</p>
+                <h2>Active</h2>
+            </div>
+        </section>
+
+        <section class="table-card">
+            <h2>Your Appointments</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date & Time</th>
+                        <th>Patient Name</th>
+                        <th>Phone</th>
+                        <th>Symptoms</th>
+                        <th>Booked Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="appointments-tbody">
+                    <tr>
+                        <td colspan="7" style="text-align: center; color: #999;">No appointments booked yet</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script>
+        function deleteAppointment(appointmentId) {
+            if (confirm('Are you sure you want to delete this appointment?')) {
+                let appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+                appointments = appointments.filter(apt => apt.id !== appointmentId);
+                localStorage.setItem('appointments', JSON.stringify(appointments));
+                loadAppointments();
+            }
+        }
+
+        function loadAppointments() {
+            const appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+            const appointmentsTbody = document.getElementById('appointments-tbody');
+
+            document.getElementById('total-appointments').textContent = appointments.length;
+            document.getElementById('confirmed-count').textContent = appointments.filter(apt => apt.status === 'confirmed').length;
+
+            if (appointments.length === 0) {
+                appointmentsTbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: #999;">No appointments booked yet</td></tr>';
+                return;
+            }
+
+            appointments.sort((a, b) => new Date(a.time) - new Date(b.time));
+            appointmentsTbody.innerHTML = '';
+
+            appointments.forEach(apt => {
+                const dateObj = new Date(apt.time);
+                const dateDisplay = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                const timeDisplay = dateObj.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+                const bookedDate = new Date(apt.bookedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${dateDisplay} ${timeDisplay}</td>
+                    <td>${apt.name}</td>
+                    <td>${apt.phone}</td>
+                    <td>${apt.remarks || '-'}</td>
+                    <td>${bookedDate}</td>
+                    <td><span style="color: green; font-weight: 600;">${apt.status}</span></td>
+                    <td><button onclick="deleteAppointment(${apt.id})" class="delete-btn">Delete</button></td>
+                `;
+                appointmentsTbody.appendChild(row);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', loadAppointments);
+    </script>
+{% endblock %}

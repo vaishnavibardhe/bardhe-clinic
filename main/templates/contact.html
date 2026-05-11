@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact - Bardhe Clinic{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="page-section contact-page">
+    <div class="contact-shell">
+        <section class="contact-hero">
+            <div class="contact-copy">
+                <span class="contact-eyebrow">Get In Touch</span>
+                <h2>Contact Us</h2>
+                <p class="contact-intro">Reach Bardhe Clinic for appointments, location details, and everyday healthcare support.</p>
+
+                <div class="contact-points">
+                    <div class="contact-point">
+                        <span class="point-label">Address</span>
+                        <p>Near New Bus Stand, Jarud, Ta: Warud, Dist: Amravati</p>
+                    </div>
+                    <div class="contact-point">
+                        <span class="point-label">Phone</span>
+                        <p>+91 9890067242</p>
+                    </div>
+                    <div class="contact-point">
+                        <span class="point-label">Email</span>
+                        <p>lokeshbardhe1996@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-highlight">
+                <span class="highlight-label">Clinic Support</span>
+                <p>Simple communication, clear directions, and a welcoming point of contact for every patient.</p>
+            </div>
+        </section>
+
+        <div class="contact-grid">
+            <div class="contact-card info-card">
+                <span class="card-kicker">Clinic Location</span>
+                <h3>Visit Bardhe Clinic</h3>
+                <p>Near New Bus Stand, Jarud, Ta: Warud, Dist: Amravati</p>
+                <p><strong>Phone:</strong> +91 9890067242</p>
+                <p><strong>Email:</strong> lokeshbardhe1996@gmail.com</p>
+            </div>
+            <div class="contact-card map-card">
+                <span class="card-kicker">Find Us</span>
+                <h3>Locate the Clinic Easily</h3>
+                <div class="map-frame">
+                    <iframe width="100%" height="260" frameborder="0" style="border:0"
+                        src="https://www.google.com/maps?q=21.456861,78.223278&output=embed" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+        <section class="feedback-card contact-feedback">
+            <div class="feedback-copy">
+                <span class="card-kicker">Feedback</span>
+                <h3>Share Your Experience</h3>
+                <p>Your feedback helps us improve the care and support we provide.</p>
+            </div>
+            <textarea id="feedback" placeholder="Write your feedback here" rows="5"></textarea>
+            <button class="btn btn-primary" onclick="saveFeedback()">Send Feedback</button>
+            <p id="feedback-message"></p>
+        </section>
+    </div>
+</section>
+
+<script>
+    function saveFeedback() {
+        const feedback = document.getElementById('feedback').value.trim();
+        const message = document.getElementById('feedback-message');
+        if (!feedback) {
+            message.textContent = 'Please write your feedback before sending.';
+            message.style.color = 'red';
+            return;
+        }
+        const feedbackList = JSON.parse(localStorage.getItem('clinicFeedback') || '[]');
+        feedbackList.push({ text: feedback, date: new Date().toISOString() });
+        localStorage.setItem('clinicFeedback', JSON.stringify(feedbackList));
+        message.textContent = 'Thank you for your feedback!';
+        message.style.color = 'green';
+        document.getElementById('feedback').value = '';
+    }
+</script>
+{% endblock %}

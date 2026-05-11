@@ -1,0 +1,245 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title translate="no">{% block title %}Bardhe Clinic{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/Logo.png' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <div id="google_translate_element"></div>
+    <nav class="navbar">
+        <div class="logo-container">
+            <div class="logo-badge">
+                <img src="{% static 'images/Logo.png' %}" class="logo-img" alt="Bardhe Clinic Logo">
+            </div>
+            <div class="logo-text">
+                <h2 translate="no">Bardhe Clinic</h2>
+                <span>Multispecialist Hospital</span>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'services' %}">Services</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+            <li><a href="{% url 'book_appointment' %}" class="login-btn">Book Appointment</a></li>
+        </ul>
+        <!-- Add this in your navbar after nav-links -->
+        <div class="language-dropdown">
+            <button class="lang-btn">🌐 Language ▼</button>
+            <div class="lang-dropdown-content">
+                <a href="#" data-lang="en">English</a>
+                <a href="#" data-lang="hi">हिंदी (Hindi)</a>
+                <a href="#" data-lang="mr">मराठी (Marathi)</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <button class="chat-launcher" type="button" aria-label="Open help chat" aria-expanded="false">
+        <span class="chat-launcher-icon">✉️</span>
+        <span class="chat-launcher-text">Chat</span>
+    </button>
+
+    <section class="chat-popup" aria-hidden="true">
+        <div class="chat-popup-header">
+            <div>
+                <h3>Chat Support</h3>
+                <p>How can I help you?</p>
+            </div>
+            <button class="chat-close" type="button" aria-label="Close chat">x</button>
+        </div>
+        <div class="chat-messages">
+            <div class="chat-message bot">
+                Hello! How can I help you today?
+            </div>
+        </div>
+        <form class="chat-form">
+            <label class="chat-label" for="chat-message">Type your message</label>
+            <div class="chat-input-row">
+                <input id="chat-message" name="message" type="text" placeholder="Tell us what you need help with" autocomplete="off">
+                <button type="submit" class="chat-send-btn">Send</button>
+            </div>
+        </form>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-content">
+                <h3 translate="no">Bardhe Clinic</h3>
+                <p>Small clinic with personal care, one doctor, and on-site medicine.</p><br>
+                <div class="footer-contact">
+                    <p>📞 +91 9890067242</p>
+                    <p>✉️ lokeshbardhe1996@gmail.com</p>
+                    <p>📍 Near New Bus Stand, Jarud, Ta: Warud, Dist: Amravati</p>
+                </div>
+            </div>
+            <div class="footer-icon">
+                <div class="footer-logo-badge">
+                    <img src="{% static 'images/Logo.png' %}" alt="Logo">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const chatLauncher = document.querySelector('.chat-launcher');
+        const chatPopup = document.querySelector('.chat-popup');
+        const chatClose = document.querySelector('.chat-close');
+        const chatForm = document.querySelector('.chat-form');
+        const chatInput = document.querySelector('#chat-message');
+        const chatMessages = document.querySelector('.chat-messages');
+
+        if (!chatLauncher || !chatPopup || !chatClose || !chatForm || !chatInput || !chatMessages) {
+            return;
+        }
+
+        const defaultReplies = [
+            'Thanks for your message. Our team will help you with appointments, services, and clinic information.',
+            'We have received your request. Please share a few more details if you want faster support.',
+            'Thank you. A clinic representative can guide you further on your question.'
+        ];
+
+        function getBotReply(message) {
+            const text = message.toLowerCase();
+
+            if (
+                text.includes('doctor name') ||
+                text.includes('who is the doctor') ||
+                text.includes("who's the doctor") ||
+                text.includes('whos the doctor') ||
+                text.includes('doctor')
+            ) {
+                return 'The doctor is <span translate="no">Dr. Lokesh Bardhe</span>.';
+            }
+
+            if (
+                text.includes('appointment') ||
+                text.includes('book appointment') ||
+                text.includes('booking')
+            ) {
+                return 'You can book an appointment from the Book Appointment page.';
+            }
+
+            if (
+                text.includes('time') ||
+                text.includes('timing') ||
+                text.includes('hours') ||
+                text.includes('open')
+            ) {
+                return 'Clinic hours are 10 AM to 1 PM and 5 PM to 10 PM.';
+            }
+
+            if (
+                text.includes('phone') ||
+                text.includes('contact') ||
+                text.includes('number') ||
+                text.includes('call')
+            ) {
+                return 'You can contact <span translate="no">Bardhe Clinic</span> at +91 9890067242.';
+            }
+
+            if (
+                text.includes('address') ||
+                text.includes('location') ||
+                text.includes('where is clinic') ||
+                text.includes('where are you')
+            ) {
+                return ' <span translate="no">Bardhe Clinic</span>  is near New Bus Stand, Jarud, Ta: Warud, Dist: Amravati.';
+            }
+
+            return defaultReplies[Math.floor(Math.random() * defaultReplies.length)];
+        }
+
+        function appendMessage(text, sender) {
+            const message = document.createElement('div');
+            message.className = `chat-message ${sender}`;
+            message.innerHTML = text;
+            chatMessages.appendChild(message);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function openChat() {
+            chatPopup.classList.add('open');
+            chatPopup.setAttribute('aria-hidden', 'false');
+            chatLauncher.setAttribute('aria-expanded', 'true');
+            chatInput.focus();
+        }
+
+        function closeChat() {
+            chatPopup.classList.remove('open');
+            chatPopup.setAttribute('aria-hidden', 'true');
+            chatLauncher.setAttribute('aria-expanded', 'false');
+        }
+
+        chatLauncher.addEventListener('click', () => {
+            if (chatPopup.classList.contains('open')) {
+                closeChat();
+                return;
+            }
+
+            openChat();
+        });
+
+        chatClose.addEventListener('click', closeChat);
+
+        chatForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const userMessage = chatInput.value.trim();
+            if (!userMessage) {
+                return;
+            }
+
+            appendMessage(userMessage, 'user');
+            chatInput.value = '';
+
+            const reply = getBotReply(userMessage);
+            window.setTimeout(() => {
+                appendMessage(reply, 'bot');
+            }, 500);
+        });
+    });
+
+    document.querySelectorAll('[data-lang]').forEach(item => {
+    item.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const lang = this.getAttribute('data-lang');
+
+        const select = document.querySelector('.goog-te-combo');
+
+        if(select) {
+            select.value = lang;
+            select.dispatchEvent(new Event('change'));
+        }
+    });
+});
+</script>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+        {
+            pageLanguage: 'en',
+            includedLanguages: 'en,hi,mr',
+            autoDisplay: false
+        },
+        'google_translate_element'
+    );
+}
+</script>
+
+<script type="text/javascript"
+src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
+
+    
+</body>
+</html>

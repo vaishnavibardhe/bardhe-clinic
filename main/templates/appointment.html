@@ -1,0 +1,213 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Book Appointment - Bardhe Clinic{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/appointment.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="page-section appointment-page">
+    <div class="appointment-card" id="appointment-form">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h2>Book Appointment</h2>
+            <a href="/admin_login/" class="view-dashboard-btn">View Dashboard</a>
+        </div>
+        <div class="form-grid">
+            <input type="text" id="name" placeholder="Enter Your Name" required>
+            <input type="tel" id="phone" placeholder="Enter Phone Number" required>
+            <select id="doctor">
+                <option value="Dr. Lokesh Ujjwal Bardhe" translate="no">Dr. Lokesh Ujjwal Bardhe</option>
+            </select>
+            <div class="time-slots-container">
+                <label>Select Date:</label>
+                <select id="appointment-date" onchange="handleDateChange()">
+                    <option value="">Choose a date</option>
+                </select>
+            </div>
+            <div class="time-slots-container">
+                <label>Select Time Slot:</label>
+                <div id="time-slots" class="slots-grid"></div>
+            </div>
+            <input type="hidden" id="appointment-time" required>
+            <textarea id="remarks" placeholder="Describe your symptoms" rows="3"></textarea>
+            <button onclick="confirmAppointment()">Confirm</button>
+        </div>
+        <p id="error" style="color:red;"></p>
+    </div>
+</section>
+
+<script>
+    let appointmentData = {};
+    const BUSINESS_HOURS = [
+        { start: 10, end: 14 },  // 10 AM to 1 PM
+        { start: 17, end: 23 }   // 5 PM to 10 PM
+    ];
+
+    function initializeAppointment() {
+        generateAvailableDates();
+    }
+
+    function generateAvailableDates() {
+        const dateSelect = document.getElementById('appointment-date');
+        const today = new Date();
+        
+        // Generate next 7 days
+        for (let i = 1; i <= 7; i++) {
+            const date = new Date(today);
+            date.setDate(today.getDate() + i);
+            
+            const dateStr = date.toISOString().split('T')[0];
+            const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
+            const dateDisplay = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            
+            const option = document.createElement('option');
+            option.value = dateStr;
+            option.textContent = `${dayName}, ${dateDisplay}`;
+            dateSelect.appendChild(option);
+        }
+    }
+
+    function formatTimeDisplay(hour) {
+        let displayHour = hour;
+        let period = 'AM';
+        
+        if (hour >= 12) {
+            period = 'PM';
+            if (hour > 12) {
+                displayHour = hour - 12;
+            }
+        }
+        
+        return `${displayHour}${period}`;
+    }
+
+    function loadTimeSlots() {
+        const selectedDate = document.getElementById('appointment-date').value;
+        const slotsContainer = document.getElementById('time-slots');
+        slotsContainer.innerHTML = '';
+
+        if (!selectedDate) {
+            return;
+        }
+
+        const bookedAppointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+        const bookedTimes = bookedAppointments
+            .filter(apt => apt.time.startsWith(selectedDate))
+            .map(apt => apt.time);
+
+        // Generate time slots for both time ranges
+        BUSINESS_HOURS.forEach(range => {
+            for (let hour = range.start; hour < range.end; hour++) {
+                const timeStr = `${String(hour).padStart(2, '0')}:00`;
+                const displayTime = formatTimeDisplay(hour);
+                const fullDateTime = `${selectedDate}T${timeStr}`;
+                const isBooked = bookedTimes.includes(fullDateTime);
+
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = `time-slot ${isBooked ? 'booked' : 'available'}`;
+                button.textContent = displayTime;
+                button.disabled = isBooked;
+                button.title = isBooked ? 'This time appointment is already booked. Choose another time or date.' : '';
+
+                if (!isBooked) {
+                    button.onclick = function() {
+                        selectTimeSlot(this, fullDateTime);
+                    };
+                }
+
+                slotsContainer.appendChild(button);
+            }
+        });
+    }
+
+    function handleDateChange() {
+        document.getElementById('appointment-time').value = '';
+        clearError();
+        loadTimeSlots();
+    }
+
+    function getStoredAppointments() {
+        return JSON.parse(localStorage.getItem('appointments') || '[]');
+    }
+
+    function isTimeSlotBooked(time) {
+        return getStoredAppointments().some(appointment => appointment.time === time);
+    }
+
+    function showError(message) {
+        document.getElementById('error').textContent = message;
+    }
+
+    function clearError() {
+        document.getElementById('error').textContent = '';
+    }
+
+    function selectTimeSlot(button, dateTime) {
+        if (isTimeSlotBooked(dateTime)) {
+            showError('This time appointment is already booked. Choose another time or date.');
+            loadTimeSlots();
+            return;
+        }
+
+        document.getElementById('appointment-time').value = dateTime;
+        clearError();
+        
+        // Highlight selected slot
+        document.querySelectorAll('.time-slot.available').forEach(btn => {
+            btn.classList.remove('selected');
+        });
+        button.classList.add('selected');
+    }
+
+    function confirmAppointment() {
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const doctor = document.getElementById('doctor').value;
+        const time = document.getElementById('appointment-time').value;
+        const remarks = document.getElementById('remarks').value;
+
+        if (!name || !phone || !time) {
+            showError('Please fill all required fields');
+            return;
+        }
+
+        if (isTimeSlotBooked(time)) {
+            showError('This time appointment is already booked. Choose another time or date.');
+            loadTimeSlots();
+            return;
+        }
+
+        clearError();
+        appointmentData = { name, phone, doctor, time, remarks };
+        const appointments = getStoredAppointments();
+        appointments.push({
+            ...appointmentData,
+            id: Date.now(),
+            status: 'confirmed',
+            bookedAt: new Date().toISOString()
+        });
+        localStorage.setItem('appointments', JSON.stringify(appointments));
+
+        // Show popup and redirect on click
+        showSuccessPopup();
+    }
+
+    function showSuccessPopup() {
+        const popup = document.createElement('div');
+        popup.className = 'success-popup';
+        popup.innerHTML = `
+            <div class="popup-content">
+                <p style="font-size: 18px; font-weight: bold; margin-bottom: 20px;">✅ Appointment Booked Successfully!</p>
+                <button onclick="window.location.href='{% url 'home' %}'" class="popup-btn">OK</button>
+            </div>
+        `;
+        document.body.appendChild(popup);
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', initializeAppointment);
+</script>
+{% endblock %}

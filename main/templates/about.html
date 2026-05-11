@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About - Bardhe Clinic{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="page-section about-page">
+    <div class="about-shell">
+        <section class="about-hero">
+            <div class="hero-copy">
+                <span class="eyebrow">Trusted Local Care</span>
+                <h2 translate="no">Dr. Lokesh Ujjwal Bardhe</h2>
+                <p class="hero-subtitle">Delivering compassionate family healthcare with modern techniques and a personalized approach for every patient.</p>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-label">Experience</span>
+                        <h3>10+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Patients</span>
+                        <h3>500+</h3>
+                        <p>Patients Served</p>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Support</span>
+                        <h3>24/7</h3>
+                        <p>Support &amp; Care</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-image-panel">
+                    <img src="{% static 'images/Dr.jpeg' %}" alt="Dr Bardhe" class="doctor-img">
+                </div>
+                <div class="hero-note">
+                    <span class="note-title">Patient First</span>
+                    <p>Focused on accessible care, practical treatment, and trusted guidance for every family.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-divider-section" aria-hidden="true">
+            <div class="features-divider"></div>
+        </section>
+
+        <section class="info-showcase">
+            <div class="section-heading">
+                <h3>Everything you need to know at a glance</h3>
+            </div>
+
+            <div class="section-grid">
+                <article class="section-card">
+                    <h3>Mission and Values</h3>
+                    <p>Our mission is to provide accessible, compassionate healthcare to our community. We value integrity, patient-centered care, and continuous learning to ensure the best outcomes for every patient.</p>
+                </article>
+
+                <article class="section-card">
+                    <h3>Clinic History</h3>
+                    <p>Established in 2023, Bardhe Clinic has been serving the local community for 1 year with dedicated care and modern medical practices.</p>
+                </article>
+
+                <article class="section-card">
+                    <h3>Certification</h3>
+                    <p>Dr. Bardhe holds B.A.M.S. and M.D. qualifications from Pune University, ensuring high standards of medical practice.</p>
+                </article>
+
+                <article class="section-card timings-card">
+                    <h3>Clinic Timings</h3>
+                    <div class="timing-info">
+                        <div class="timing-slot">
+                            <span class="timing-name">Morning</span>
+                            <strong>10:00 AM - 1:00 PM</strong>
+                        </div>
+                        <div class="timing-slot">
+                            <span class="timing-name">Evening</span>
+                            <strong>5:00 PM - 10:00 PM</strong>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="features-divider-section" aria-hidden="true">
+            <div class="features-divider"></div>
+        </section>
+
+        <section class="doctor-card about-details">
+            <div class="doctor-intro">
+                <span class="section-kicker">Doctor Profile</span>
+                <h3 translate="no">About Dr. Bardhe</h3>
+                <p>Experienced, approachable, and focused on personalized care for patients of every age.</p>
+            </div>
+
+            <div class="doctor-info-grid">
+                <div class="info-item">
+                    <span class="info-label">Qualification</span>
+                    <span class="info-value">B.A.M.S., M.D. Pune</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Specialization</span>
+                    <span class="info-value">General Medicine, Minor Surgery, Agnikarma, Vidhakarma</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Approach</span>
+                    <span class="info-value">Personalized care, preventive guidance, and gentle treatment for every age.</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Visiting Hours</span>
+                    <span class="info-value">
+                        <strong>Morning:</strong> 10:00 AM - 1:00 PM<br>
+                        <strong>Evening:</strong> 5:00 PM - 10:00 PM
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-divider-section" aria-hidden="true">
+            <div class="features-divider"></div>
+        </section>
+
+        <section class="faq-section">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-number">01</div>
+                    <div class="faq-content">
+                        <h4>What services do you offer?</h4>
+                        <p>General health checkups, fever treatment, minor surgeries, wound dressing, and preventive consultations.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-number">02</div>
+                    <div class="faq-content">
+                        <h4>Do you accept appointments?</h4>
+                        <p>Yes, you can book appointments online or call us directly.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-number">03</div>
+                    <div class="faq-content">
+                        <h4>Is emergency care available?</h4>
+                        <p>Yes, we provide emergency care during our operating hours.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+{% endblock %}
