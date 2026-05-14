@@ -2,7 +2,7 @@
 
 Bardhe Clinic is a modern healthcare web application developed using Django.  
 The project provides an easy and user-friendly platform for patients to explore clinic services, book appointments, and access healthcare information online.
-
+Live link: https://bardhe-clinic-19.onrender.com
 ---
 
 ## ✨ Features
